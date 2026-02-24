@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo Luquisa (Interno)</title>
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --card:#12161c;
+      --muted:#9aa4b2;
+      --text:#e9eef6;
+      --line:#232a34;
+      --accent:#33d17a;
+      --accent2:#4aa3ff;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #0b0d10 0%, #07090c 100%);
+      color:var(--text);
+    }
+    header{
+      position:sticky; top:0; z-index:5;
+      background:rgba(11,13,16,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:14px 16px;}
+    .top{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; margin-right:auto;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:999px;background:var(--accent);
+      box-shadow: 0 0 0 6px rgba(51,209,122,.12);
+    }
+    .title{
+      font-weight:800; letter-spacing:.2px;
+    }
+    .subtitle{
+      color:var(--muted); font-size:12px; margin-top:2px;
+    }
+    .search{
+      display:flex; gap:10px; align-items:center; flex: 1 1 420px;
+    }
+    input, select{
+      width:100%;
+      background:var(--card);
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding:12px 12px;
+      outline:none;
+    }
+    input::placeholder{color:#6c7788}
+    .btn{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#141a22,#0f141b);
+      color:var(--text);
+      border-radius:12px;
+      padding:12px 14px;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+      white-space:nowrap;
+    }
+    .btn:hover{border-color:#2f3a48}
+    main{padding:18px 0 50px}
+    .meta{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+      margin:8px 0 14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat( auto-fill, minmax(220px, 1fr) );
+      gap:14px;
+    }
+    .card{
+      background:linear-gradient(180deg,#12161c,#0f1318);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .08s ease, border-color .08s ease;
+    }
+    .card:hover{transform: translateY(-2px); border-color:#2f3a48;}
+    .thumb{
+      height:140px;
+      background:#0a0d12;
+      display:flex; align-items:center; justify-content:center;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .thumb img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter:saturate(1.05);
+    }
+    .body{padding:12px 12px 14px;}
+    .h{
+      font-weight:800; font-size:14px; line-height:1.2;
+      margin:0 0 8px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center; gap:8px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color: var(--muted);
+      font-size:12px;
+      background: rgba(255,255,255,.02);
+    }
+    .chip b{color:#cfe3ff; font-weight:700}
+    .note{color:var(--muted); font-size:12px; margin-top:10px; line-height:1.35}
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.75);
+      display:none;
+      align-items:center; justify-content:center;
+      padding:14px;
+      z-index:10;
+    }
+    .modal.open{display:flex;}
+    .modalBox{
+      width:min(1100px, 96vw);
+      height:min(92vh, 900px);
+      background:linear-gradient(180deg,#12161c,#0e1217);
+      border:1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .modalTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+    }
+    .modalTop .left{
+      min-width:0;
+    }
+    .modalTop .t{
+      font-weight:900; margin:0;
+      font-size:14px;
+    }
+    .modalTop .c{
+      margin:3px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .modalTop .actions{display:flex; gap:10px; align-items:center;}
+    .modalTop .x{
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      width:40px;height:40px;
+      border-radius:12px;
+      cursor:pointer;
+    }
+    .modalTop .x:hover{border-color:#2f3a48;}
+    .modalImg{
+      flex:1;
+      background:#0a0d12;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .modalImg img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .smallHelp{
+      color:var(--muted);
+      font-size:12px;
+      padding:10px 12px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .kbd{
+      border:1px solid var(--line);
+      padding:2px 8px;
+      border-radius:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color:#cfe3ff;
+      background:rgba(255,255,255,.03);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <div class="dot"></div>
+          <div>
+            <div class="title">Catálogo Interno</div>
+            <div class="subtitle">Búsqueda por nombre / keywords — láminas (71)</div>
+          </div>
+        </div>
+
+        <div class="search">
+          <input id="q" type="search" placeholder="Buscar… (ej: atf, r-95, kerosene, thinner)" autocomplete="off" />
+          <select id="cat">
+            <option value="">Todas las categorías</option>
+          </select>
+          <button class="btn" id="clear">Limpiar</button>
+        </div>
+      </div>
+      <div class="meta">
+        <div id="count">Cargando catálogo…</div>
+        <div>Tip: escribe parcial (ej: <span class="kbd">ker</span>)</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid" id="grid"></div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modalBox" role="dialog" aria-modal="true" aria-label="Vista de lámina">
+      <div class="modalTop">
+        <div class="left">
+          <p class="t" id="mTitle"></p>
+          <p class="c" id="mCat"></p>
+        </div>
+        <div class="actions">
+          <button class="btn" id="shareBtn" title="Compartir">Compartir</button>
+          <button class="x" id="closeBtn" title="Cerrar (Esc)">✕</button>
+        </div>
+      </div>
+      <div class="modalImg">
+        <img id="mImg" alt="">
+      </div>
+      <div class="smallHelp">
+        <div>Salir: <span class="kbd">Esc</span> | Cerrar tocando afuera</div>
+        <div id="mFile"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ajusta esta ruta si tu carpeta de imágenes se llama distinto
+    const IMG_BASE = "./img/";
+
+    let data = [];
+    let filtered = [];
+
+    const $q = document.getElementById("q");
+    const $cat = document.getElementById("cat");
+    const $grid = document.getElementById("grid");
+    const $count = document.getElementById("count");
+    const $clear = document.getElementById("clear");
+
+    const $modal = document.getElementById("modal");
+    const $mTitle = document.getElementById("mTitle");
+    const $mCat = document.getElementById("mCat");
+    const $mImg = document.getElementById("mImg");
+    const $mFile = document.getElementById("mFile");
+    const $closeBtn = document.getElementById("closeBtn");
+    const $shareBtn = document.getElementById("shareBtn");
+
+    const norm = (s) =>
+      (s ?? "")
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // quita tildes en búsqueda
+        .trim();
+
+    function setCategories(items){
+      const cats = Array.from(new Set(items.map(x => (x.categoria || "").trim()).filter(Boolean)))
+                        .sort((a,b)=>a.localeCompare(b, "es"));
+      for(const c of cats){
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.textContent = c;
+        $cat.appendChild(opt);
+      }
+    }
+
+    function matchItem(item, q){
+      if(!q) return true;
+      const hay = norm(item.titulo) + " " + norm(item.keywords);
+      return hay.includes(q);
+    }
+
+    function applyFilters(){
+      const q = norm($q.value);
+      const cat = ($cat.value || "").trim();
+
+      filtered = data.filter(it => {
+        const okQ = matchItem(it, q);
+        const okC = !cat || (it.categoria || "").trim() === cat;
+        return okQ && okC;
+      });
+
+      render();
+    }
+
+    function render(){
+      $grid.innerHTML = "";
+
+      $count.textContent = `Mostrando ${filtered.length} de ${data.length}`;
+
+      for(const item of filtered){
+        const card = document.createElement("div");
+        card.className = "card";
+        card.tabIndex = 0;
+
+        const imgSrc = IMG_BASE + item.imagen;
+
+        card.innerHTML = `
+          <div class="thumb">
+            <img src="${imgSrc}" alt="${escapeHtml(item.titulo)}" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.textContent='(sin imagen)';"/>
+          </div>
+          <div class="body">
+            <div class="h">${escapeHtml(item.titulo)}</div>
+            <div class="chip"><span>📁</span> <b>${escapeHtml(item.categoria || "Sin categoría")}</b></div>
+            <div class="note">${escapeHtml(shorten(item.keywords || "", 90))}</div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openModal(item));
+        card.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " ") openModal(item);
+        });
+
+        $grid.appendChild(card);
+      }
+
+      if(filtered.length === 0){
+        const div = document.createElement("div");
+        div.style.color = "var(--muted)";
+        div.textContent = "No se encontraron resultados.";
+        $grid.appendChild(div);
+      }
+    }
+
+    function openModal(item){
+      $mTitle.textContent = item.titulo || "";
+      $mCat.textContent = item.categoria ? `Categoría: ${item.categoria}` : "Categoría: (sin asignar)";
+      $mImg.src = IMG_BASE + item.imagen;
+      $mImg.alt = item.titulo || "";
+      $mFile.textContent = item.imagen || "";
+
+      $modal.classList.add("open");
+      $modal.setAttribute("aria-hidden", "false");
+
+      // compartir (si el navegador lo soporta)
+      $shareBtn.onclick = async () => {
+        const text = `${item.titulo}\nCategoría: ${item.categoria || "-"}\n`;
+        try{
+          if(navigator.share){
+            await navigator.share({ title: item.titulo, text });
+          }else{
+            await navigator.clipboard.writeText(text);
+            alert("Copiado al portapapeles ✅");
+          }
+        }catch(e){
+          // usuario canceló o no permitido
+        }
+      };
+    }
+
+    function closeModal(){
+      $modal.classList.remove("open");
+      $modal.setAttribute("aria-hidden", "true");
+      $mImg.src = "";
+    }
+
+    // helpers
+    function shorten(s, n){
+      s = (s ?? "").toString().trim();
+      return s.length > n ? s.slice(0, n-1) + "…" : s;
+    }
+    function escapeHtml(str){
+      return (str ?? "").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    // eventos UI
+    $q.addEventListener("input", applyFilters);
+    $cat.addEventListener("change", applyFilters);
+    $clear.addEventListener("click", () => {
+      $q.value = "";
+      $cat.value = "";
+      applyFilters();
+      $q.focus();
+    });
+
+    $closeBtn.addEventListener("click", closeModal);
+    $modal.addEventListener("click", (e) => {
+      if(e.target === $modal) closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeModal();
+    });
+
+    // carga del JSON
+    (async function init(){
+      try{
+        const res = await fetch("./catalogo.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("No se pudo cargar catalogo.json");
+        data = await res.json();
+
+        // orden por título
+        data.sort((a,b) => (a.titulo||"").localeCompare((b.titulo||""), "es"));
+
+        setCategories(data);
+        filtered = data;
+        render();
+
+        $count.textContent = `Listo: ${data.length} láminas`;
+      }catch(err){
+        $count.textContent = "Error cargando catálogo.";
+        $grid.innerHTML = `<div style="color:var(--muted)">⚠️ ${escapeHtml(err.message)}</div>
+        <div style="color:var(--muted); margin-top:6px">Asegúrate de tener index.html, catalogo.json y la carpeta img/ en el mismo lugar, y abrirlo desde un servidor local (no doble click).</div>`;
+        console.error(err);
+      }
+    })();
+  </script>
+</body>
+</html>

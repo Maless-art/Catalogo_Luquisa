@@ -1,0 +1,506 @@
+[
+  {
+    "id": 1,
+    "titulo": "3en1 - 3 en 1",
+    "categoria": "lubricantes multiusos",
+    "keywords": "3en1, 3 en 1, aceite 3 en 1, lubricante multiuso",
+    "imagen": "3en1 - 3 en 1.png"
+  },
+  {
+    "id": 2,
+    "titulo": "10w30 - 20w50 - 15w40 - krownx",
+    "categoria": "aceite de motor",
+    "keywords": "10w30, 10w-30, 20w50, 20w-50, 15w40, 15w-40, krownx, aceite motor",
+    "imagen": "10w30 - 20w50 - 15w40 - krownx.png"
+  },
+  {
+    "id": 3,
+    "titulo": "10W30",
+    "categoria": "aceite de motor",
+    "keywords": "10w30, 10w-30, aceite 10w30",
+    "imagen": "10W30.png"
+  },
+  {
+    "id": 4,
+    "titulo": "15W40",
+    "categoria": "aceite de motor",
+    "keywords": "15w40, 15w-40, aceite 15w40",
+    "imagen": "15W40.png"
+  },
+  {
+    "id": 5,
+    "titulo": "15w40t",
+    "categoria": "aceite de motor",
+    "keywords": "15w40t, 15w-40t, diesel 15w40",
+    "imagen": "15w40t.png"
+  },
+  {
+    "id": 6,
+    "titulo": "20w50",
+    "categoria": "aceite de motor",
+    "keywords": "20w50, 20w-50, aceite 20w50",
+    "imagen": "20w50.png"
+  },
+  {
+    "id": 7,
+    "titulo": "68 - tractor - hidraulico",
+    "categoria": "hidráulicos",
+    "keywords": "68, hidraulico 68, tractor 68, aceite hidraulico",
+    "imagen": "68 - tractor - hidraulico.png"
+  },
+  {
+    "id": 8,
+    "titulo": "80w90 - 85w140",
+    "categoria": "transmisión",
+    "keywords": "80w90, 80w-90, 85w140, 85w-140, diferencial",
+    "imagen": "80w90 - 85w140.png"
+  },
+  {
+    "id": 9,
+    "titulo": "90 - 140 - gl - krownx",
+    "categoria": "transmisión",
+    "keywords": "90, 140, gl, gl4, gl5, krownx, aceite transmision",
+    "imagen": "90 - 140 - gl - krownx.png"
+  },
+  {
+    "id": 10,
+    "titulo": "acido muriatico",
+    "categoria": "químicos",
+    "keywords": "acido muriatico, muriatico, limpieza fuerte",
+    "imagen": "acido muriatico.png"
+  },
+  {
+    "id": 11,
+    "titulo": "acido sulfurico",
+    "categoria": "químicos",
+    "keywords": "acido sulfurico, sulfurico, bateria",
+    "imagen": "acido sulfurico.png"
+  },
+  {
+    "id": 12,
+    "titulo": "aditivos",
+    "categoria": "aditivos",
+    "keywords": "aditivo, aditivos, tratamiento motor",
+    "imagen": "aditivos.png"
+  },
+  {
+    "id": 13,
+    "titulo": "aguarras",
+    "categoria": "solventes",
+    "keywords": "aguarras, solvente pintura",
+    "imagen": "aguarras.png"
+  },
+  {
+    "id": 14,
+    "titulo": "alcohol industrial",
+    "categoria": "solventes",
+    "keywords": "alcohol industrial, alcohol",
+    "imagen": "alcohol industrial.png"
+  },
+  {
+    "id": 15,
+    "titulo": "alquitran - insectos - color - magic - wax - dry - tapiz - alfombra - interiores",
+    "categoria": "embellecimiento",
+    "keywords": "alquitran, insectos, color, magic wax, dry, tapiz, alfombra, interiores",
+    "imagen": "alquitran - insectos - color - magic - wax - dry - tapiz - alfombra - interiores.png"
+  },
+  {
+    "id": 16,
+    "titulo": "amoniac - r01 - r02 - r95",
+    "categoria": "limpieza",
+    "keywords": "amoniaco, r01, r-01, r02, r-02, r95, r-95",
+    "imagen": "amoniac - r01 - r02 - r95.png"
+  },
+  {
+    "id": 17,
+    "titulo": "arrivo",
+    "categoria": "insecticidas",
+    "keywords": "arrivo",
+    "imagen": "arrivo.png"
+  },
+  {
+    "id": 18,
+    "titulo": "atf",
+    "categoria": "transmisión",
+    "keywords": "atf, transmision automatica, type a",
+    "imagen": "atf.png"
+  },
+  {
+    "id": 19,
+    "titulo": "bomba - agua - enjuague - radiador - 10 minutos",
+    "categoria": "aditivos",
+    "keywords": "bomba agua, enjuague radiador, radiador 10 minutos",
+    "imagen": "bomba - agua - enjuague - radiador - 10 minutos.png"
+  },
+  {
+    "id": 20,
+    "titulo": "carbon - r30 - 123",
+    "categoria": "barbacoa",
+    "keywords": "carbon, r30, r-30, 123",
+    "imagen": "carbon - r30 - 123.png"
+  },
+  {
+    "id": 21,
+    "titulo": "carbu cleaner",
+    "categoria": "automotriz",
+    "keywords": "carbu cleaner, limpiador carburador",
+    "imagen": "carbu cleaner.png"
+  },
+  {
+    "id": 22,
+    "titulo": "carnauba - brillo - zip - wax - car - wash",
+    "categoria": "embellecimiento",
+    "keywords": "carnauba, brillo, zip wax, car wash",
+    "imagen": "carnauba - brillo - zip - wax - car - wash.png"
+  },
+  {
+    "id": 23,
+    "titulo": "carnauba - wax - shampoo - champu - turtle - cera",
+    "categoria": "embellecimiento",
+    "keywords": "carnauba, wax, shampoo auto, champu auto, turtle, cera",
+    "imagen": "carnauba - wax - shampoo - champu - turtle - cera.png"
+  },
+  {
+    "id": 24,
+    "titulo": "castrol 1",
+    "categoria": "aceite de motor",
+    "keywords": "castrol 1",
+    "imagen": "castrol 1.png"
+  },
+  {
+    "id": 25,
+    "titulo": "castrol 2",
+    "categoria": "aceite de motor",
+    "keywords": "castrol 2",
+    "imagen": "castrol 2.png"
+  },
+  {
+    "id": 26,
+    "titulo": "cera - ceramico - shampoo - wax - wash",
+    "categoria": "embellecimiento",
+    "keywords": "cera ceramico, shampoo auto, wax wash",
+    "imagen": "cera - ceramico - shampoo - wax - wash.png"
+  },
+  {
+    "id": 27,
+    "titulo": "cloro",
+    "categoria": "limpieza",
+    "keywords": "cloro, desinfectante",
+    "imagen": "cloro.png"
+  },
+  {
+    "id": 28,
+    "titulo": "compuesto - pulir - carnauba - cera - restaura - autos",
+    "categoria": "embellecimiento",
+    "keywords": "compuesto pulir, carnauba, cera autos, restaurar pintura",
+    "imagen": "compuesto - pulir - carnauba - cera - restaura - autos.png"
+  },
+  {
+    "id": 29,
+    "titulo": "coolant - special - rojo",
+    "categoria": "aditivos",
+    "keywords": "coolant, refrigerante rojo, coolant special",
+    "imagen": "coolant - special - rojo.png"
+  },
+  {
+    "id": 30,
+    "titulo": "coolant cuarto",
+    "categoria": "aditivos",
+    "keywords": "coolant cuarto, refrigerante cuarto",
+    "imagen": "coolant cuarto.png"
+  },
+  {
+    "id": 31,
+    "titulo": "desengrasante - r05 - limon",
+    "categoria": "desengrasantes",
+    "keywords": "desengrasante, r05, r-05, limon",
+    "imagen": "desengrasante - r05 - limón.png"
+  },
+  {
+    "id": 32,
+    "titulo": "eliminador - olor - odorx - caribbean - espuma - llantas - cera - spray - wheel - tire",
+    "categoria": "embellecimiento",
+    "keywords": "eliminador olor, odorx, caribbean, espuma llantas, wheel, tire",
+    "imagen": "eliminador - olor - odorx - caribbean - espuma - llantas - cera - spray - wheel - tire.png"
+  },
+  {
+    "id": 33,
+    "titulo": "engranaje - diferencial - cvt - transmision - patinada",
+    "categoria": "aditivos",
+    "keywords": "engranaje, diferencial, cvt, transmision, patinada",
+    "imagen": "engranaje - diferencial - cvt - transmision - patinada.png"
+  },
+  {
+    "id": 34,
+    "titulo": "fertilizante - abono - urea - 122412 - 12-24-12 - nitrofoska",
+    "categoria": "fertilizandes",
+    "keywords": "fertilizante, abono, urea, 122412, 12-24-12, nitrofoska",
+    "imagen": "fertilizante - abono - urea - 122412 - 12-24-12 - nitrofoska.png"
+  },
+  {
+    "id": 35,
+    "titulo": "freno",
+    "categoria": "fluido para frenos",
+    "keywords": "freno",
+    "imagen": "freno.png"
+  },
+  {
+    "id": 36,
+    "titulo": "gato - jack - sellador",
+    "categoria": "selladores",
+    "keywords": "gato, jack, sellador",
+    "imagen": "gato - jack - sellador.png"
+  },
+  {
+    "id": 37,
+    "titulo": "grasas",
+    "categoria": "grasas",
+    "keywords": "grasas, grasa automotriz",
+    "imagen": "grasas.png"
+  },
+  {
+    "id": 38,
+    "titulo": "inyectores - octanaje - gasolina - diesel - tratamiento",
+    "categoria": "aditivos",
+    "keywords": "inyectores, octanaje, gasolina, diesel, tratamiento",
+    "imagen": "inyectores - octanaje - gasolina - diesel - tratamiento.png"
+  },
+  {
+    "id": 39,
+    "titulo": "jaso - 4t - moto",
+    "categoria": "motocicletas",
+    "keywords": "jaso 4t, moto 4t",
+    "imagen": "jaso - 4t - moto.png"
+  },
+  {
+    "id": 40,
+    "titulo": "kangaru",
+    "categoria": "limpieza",
+    "keywords": "kangaru",
+    "imagen": "kangaru.png"
+  },
+  {
+    "id": 41,
+    "titulo": "kerosene",
+    "categoria": "solventes",
+    "keywords": "kerosene, queroseno",
+    "imagen": "kerosene.png"
+  },
+  {
+    "id": 42,
+    "titulo": "lectrolitos",
+    "categoria": "baterías",
+    "keywords": "lectrolitos",
+    "imagen": "lectrolitos.png"
+  },
+  {
+    "id": 43,
+    "titulo": "lindo",
+    "categoria": "embellecimiento",
+    "keywords": "lindo",
+    "imagen": "lindo.png"
+  },
+  {
+    "id": 44,
+    "titulo": "multimix",
+    "categoria": "2 tiempos",
+    "keywords": "multimix",
+    "imagen": "multimix.png"
+  },
+  {
+    "id": 45,
+    "titulo": "pentadrin especial",
+    "categoria": "insecticidas",
+    "keywords": "pentadrin especial",
+    "imagen": "pentadrin especial.png"
+  },
+  {
+    "id": 46,
+    "titulo": "pentadrin oscuro",
+    "categoria": "insecticidas",
+    "keywords": "pentadrin oscuro",
+    "imagen": "pentadrin oscuro.png"
+  },
+  {
+    "id": 47,
+    "titulo": "poliuretano",
+    "categoria": "solventes",
+    "keywords": "poliuretano",
+    "imagen": "poliuretano.png"
+  },
+  {
+    "id": 49,
+    "titulo": "potasa",
+    "categoria": "cañerías",
+    "keywords": "potasa",
+    "imagen": "potasa.png"
+  },
+  {
+    "id": 50,
+    "titulo": "power steering - ps",
+    "categoria": "fluido caja de timón",
+    "keywords": "power steering, ps, direccion hidraulica",
+    "imagen": "power steering - ps.png"
+  },
+  {
+    "id": 51,
+    "titulo": "r04 - r08 - r26",
+    "categoria": "insecticidas",
+    "keywords": "r04, r-04, r08, r-08, r26, r-26",
+    "imagen": "r04 - r08 - r26.png"
+  },
+  {
+    "id": 52,
+    "titulo": "r11 - r14 - r23 - r06 - r24 - r25",
+    "categoria": "limpieza",
+    "keywords": "r11, r-11, r14, r-14, r23, r-23, r06, r-06, r24, r-24, r25, r-25",
+    "imagen": "r11 - r14 - r23 - r06 - r24 - r25.png"
+  },
+  {
+    "id": 53,
+    "titulo": "r21 - r03 - r29",
+    "categoria": "limpieza",
+    "keywords": "r21, r-21, 03, r29, r-29",
+    "imagen": "r21 - r03 - r29.png"
+  },
+  {
+    "id": 54,
+    "titulo": "sae40",
+    "categoria": "aceite de motor",
+    "keywords": "r40, r-40",
+    "imagen": "sae40.png"
+  },
+  {
+    "id": 55,
+    "titulo": "sae50",
+    "categoria": "aceite de motor",
+    "keywords": "r50, r-50",
+    "imagen": "sae50.png"
+  },
+  {
+    "id": 56,
+    "titulo": "gl 90 140",
+    "categoria": "transmisión",
+    "keywords": "r90, r-90, r140, r-140",
+    "imagen": "gl 90 140.png"
+  },
+  {
+    "id": 57,
+    "titulo": "rayones - removedor - calcomanías - remolinos - lampara - alquitran - insectos",
+    "categoria": "embellecimiento",
+    "keywords": "rayones, removedor rayones, calcomanias, remolinos, lampara, alquitran, insectos",
+    "imagen": "rayones - removedor - calcomanias - remolinos - lampara - alquitran - insectos.png"
+  },
+  {
+    "id": 58,
+    "titulo": "reparador - compresion - sellador - humo - reten - cigueñal",
+    "categoria": "aditivos",
+    "keywords": "reparador compresion, sellador humo, reten, ciguenal",
+    "imagen": "reparador - compresión - sellador - humo - reten - cigüeñal.png"
+  },
+  {
+    "id": 59,
+    "titulo": "resina - r10 - cal",
+    "categoria": "industrial",
+    "keywords": "resina, r10, r-10, cal",
+    "imagen": "resina - r10 - cal.png"
+  },
+  {
+    "id": 60,
+    "titulo": "restaurador - lampara - limpiador - cuero - vidrios - turtle",
+    "categoria": "embellecimiento",
+    "keywords": "restaurador lampara, limpiador cuero, vidrios turtle",
+    "imagen": "restaurador - lampara - limpiador - cuero - vidrios - turtle.png"
+  },
+  {
+    "id": 61,
+    "titulo": "restaurador - molduras - cera - liquida - compound - robin - polishing - pulir - frotar - pulidor",
+    "categoria": "embellecimiento",
+    "keywords": "restaurador molduras, cera liquida, compound, polishing, pulidor",
+    "imagen": "restaurador - molduras - cera - liquida - compound - robin - polishing - pulir - frotar - pulidor.png"
+  },
+  {
+    "id": 62,
+    "titulo": "s30 - s40 - s50",
+    "categoria": "aceite de motor",
+    "keywords": "s30, s-30, s40, s-40, s50, s-50",
+    "imagen": "s30 - s40 - s50.png"
+  },
+  {
+    "id": 63,
+    "titulo": "s90",
+    "categoria": "transmisión",
+    "keywords": "s90, s-90",
+    "imagen": "s90.png"
+  },
+  {
+    "id": 64,
+    "titulo": "s140",
+    "categoria": "transmisión",
+    "keywords": "s140, s-140",
+    "imagen": "s140.png"
+  },
+  {
+    "id": 65,
+    "titulo": "sellador - fuga - radiador - limpiador - enjuague - enfriamiento - sistema",
+    "categoria": "aditivos",
+    "keywords": "sellador radiador, fuga radiador, limpiador radiador, enfriamiento sistema",
+    "imagen": "sellador - fuga - radiador - limpiador - enjuague - enfriamiento - sistema.png"
+  },
+  {
+    "id": 66,
+    "titulo": "sellador - fuga - reparador - motor - direccion hid",
+    "categoria": "aditivos",
+    "keywords": "sellador motor, fuga motor, direccion hidraulica",
+    "imagen": "sellador - fuga - reparador - motor - direccion hid.png"
+  },
+  {
+    "id": 67,
+    "titulo": "sello - aceite - junta - bloque - cabeza",
+    "categoria": "aditivos",
+    "keywords": "sello aceite, junta bloque, junta cabeza",
+    "imagen": "sello - aceite - junta - bloque - cabeza.png"
+  },
+  {
+    "id": 68,
+    "titulo": "tcw3 - fuera de borda",
+    "categoria": "2 tiempos marino",
+    "keywords": "tcw3, fuera de borda, motor marino",
+    "imagen": "tcw3 - fuera de borda.png"
+  },
+  {
+    "id": 69,
+    "titulo": "thinner laca",
+    "categoria": "solventes",
+    "keywords": "thinner laca, solvente laca",
+    "imagen": "thinner laca.png"
+  },
+  {
+    "id": 70,
+    "titulo": "thinner sintetico",
+    "categoria": "solventes",
+    "keywords": "thinner sintetico",
+    "imagen": "thinner sintetico.png"
+  },
+  {
+    "id": 71,
+    "titulo": "tratamiento - motor - aditivo - humo - anillos",
+    "categoria": "aditivos",
+    "keywords": "tratamiento motor, aditivo humo, anillos",
+    "imagen": "tratamiento - motor - aditivo - humo - anillos.png"
+  },
+  {
+    "id": 72,
+    "titulo": "wd40 especialista",
+    "categoria": "lubricantes multiusos",
+    "keywords": "wd40 especialista, wd-40 especialista",
+    "imagen": "wd40 especialista.png"
+  },
+  {
+    "id": 73,
+    "titulo": "wd40",
+    "categoria": "lubricantes multiusos",
+    "keywords": "wd40, wd-40",
+    "imagen": "wd40.png"
+  }
+]
