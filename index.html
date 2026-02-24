@@ -3,8 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Catálogo Luquisa (Interno)</title>
+ <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#d91f26">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+
+</h1>
   <style>
+.version{
+  font-size:12px;
+  font-weight:600;
+  color:#9ca3af;
+  margin-left:8px;
+}
     :root{
       --bg:#0b0d10;
       --card:#12161c;
@@ -16,211 +26,428 @@
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --radius:16px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b0d10 0%, #07090c 100%);
-      color:var(--text);
-    }
-    header{
-      position:sticky; top:0; z-index:5;
-      background:rgba(11,13,16,.85);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .wrap{max-width:1100px; margin:0 auto; padding:14px 16px;}
-    .top{
-      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px; margin-right:auto;
-    }
-    .dot{
-      width:12px;height:12px;border-radius:999px;background:var(--accent);
-      box-shadow: 0 0 0 6px rgba(51,209,122,.12);
-    }
-    .title{
-      font-weight:800; letter-spacing:.2px;
-    }
-    .subtitle{
-      color:var(--muted); font-size:12px; margin-top:2px;
-    }
-    .search{
-      display:flex; gap:10px; align-items:center; flex: 1 1 420px;
-    }
-    input, select{
-      width:100%;
-      background:var(--card);
-      color:var(--text);
-      border:1px solid var(--line);
-      border-radius: 12px;
-      padding:12px 12px;
-      outline:none;
-    }
-    input::placeholder{color:#6c7788}
-    .btn{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg,#141a22,#0f141b);
-      color:var(--text);
-      border-radius:12px;
-      padding:12px 14px;
-      cursor:pointer;
-      box-shadow: var(--shadow);
-      white-space:nowrap;
-    }
-    .btn:hover{border-color:#2f3a48}
-    main{padding:18px 0 50px}
-    .meta{
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      color:var(--muted);
-      font-size:13px;
-      margin:8px 0 14px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: repeat( auto-fill, minmax(220px, 1fr) );
-      gap:14px;
-    }
-    .card{
-      background:linear-gradient(180deg,#12161c,#0f1318);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      cursor:pointer;
-      transition: transform .08s ease, border-color .08s ease;
-    }
-    .card:hover{transform: translateY(-2px); border-color:#2f3a48;}
-    .thumb{
-      height:140px;
-      background:#0a0d12;
-      display:flex; align-items:center; justify-content:center;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-    .thumb img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      filter:saturate(1.05);
-    }
-    .body{padding:12px 12px 14px;}
-    .h{
-      font-weight:800; font-size:14px; line-height:1.2;
-      margin:0 0 8px;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center; gap:8px;
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color: var(--muted);
-      font-size:12px;
-      background: rgba(255,255,255,.02);
-    }
-    .chip b{color:#cfe3ff; font-weight:700}
-    .note{color:var(--muted); font-size:12px; margin-top:10px; line-height:1.35}
+    :root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
 
-    /* Modal */
-    .modal{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.75);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:14px;
-      z-index:10;
-    }
-    .modal.open{display:flex;}
-    .modalBox{
-      width:min(1100px, 96vw);
-      height:min(92vh, 900px);
-      background:linear-gradient(180deg,#12161c,#0e1217);
-      border:1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-    }
-    .modalTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 12px;
-      border-bottom:1px solid var(--line);
-    }
-    .modalTop .left{
-      min-width:0;
-    }
-    .modalTop .t{
-      font-weight:900; margin:0;
-      font-size:14px;
-    }
-    .modalTop .c{
-      margin:3px 0 0;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .modalTop .actions{display:flex; gap:10px; align-items:center;}
-    .modalTop .x{
-      border:1px solid var(--line);
-      background:transparent;
-      color:var(--text);
-      width:40px;height:40px;
-      border-radius:12px;
-      cursor:pointer;
-    }
-    .modalTop .x:hover{border-color:#2f3a48;}
-    .modalImg{
-      flex:1;
-      background:#0a0d12;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .modalImg img{
-      max-width:100%;
-      max-height:100%;
-      object-fit:contain;
-      display:block;
-    }
-    .smallHelp{
-      color:var(--muted);
-      font-size:12px;
-      padding:10px 12px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .kbd{
-      border:1px solid var(--line);
-      padding:2px 8px;
-      border-radius:8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      color:#cfe3ff;
-      background:rgba(255,255,255,.03);
-    }
+  --card:#ffffff;
+  --radius:18px;
+  --shadow:0 10px 25px rgba(17,24,39,.08);
+
+  --accent:#FFD400; 
+  --danger:#d91f26;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color:var(--text);
+}
+header{
+  position:sticky; top:0; z-index:5;
+  background:rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.wrap{max-width:1100px; margin:0 auto; padding:14px 16px;}
+.top{
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+}
+.brand{
+  display:flex; align-items:center; gap:10px; margin-right:auto;
+}
+.dot{
+  width:12px;height:12px;border-radius:999px;background:var(--accent);
+  box-shadow: 0 0 0 6px rgba(244,196,0,.22);
+}
+.title{
+  font-weight:800; letter-spacing:.2px;
+}
+.subtitle{
+  color:var(--muted); font-size:12px; margin-top:2px;
+}
+.search{
+  display:flex; gap:10px; align-items:center; flex: 1 1 420px;
+}
+input, select{
+  width:100%;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--line);
+  border-radius: 12px;
+  padding:12px 12px;
+  outline:none;
+}
+input::placeholder{color:#9ca3af}
+input:focus, select:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(244,196,0,.22);
+}
+
+/* Botón (amarillo por defecto) */
+.btn{
+  border:1px solid #e3b400;
+  background: var(--accent);
+  color:#111;
+  border-radius:12px;
+  padding:12px 14px;
+  cursor:pointer;
+  box-shadow: var(--shadow);
+  white-space:nowrap;
+}
+.btn:hover{
+  filter: brightness(1.03);
+}
+
+.btn.danger{
+  background: var(--danger);
+  border-color:#b9161c;
+  color:#fff;
+}
+
+main{padding:18px 0 50px}
+.meta{
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+  color:var(--muted);
+  font-size:13px;
+  margin:8px 0 14px;
+}
+.grid{
+  display:grid;
+  grid-template-columns: repeat( auto-fill, minmax(220px, 1fr) );
+  gap:14px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  cursor:pointer;
+  transition: transform .08s ease, border-color .08s ease, box-shadow .12s ease;
+}
+.card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(217,31,38,.35);
+  box-shadow: 0 14px 34px rgba(17,24,39,.10);
+}
+.thumb{
+  aspect-ratio: 4 / 3;   
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+}
+.body{padding:12px 12px 14px;}
+.body{
+  padding:12px 12px 14px;
+}
+
+.body p{
+  color:#c7ccd3;
+  font-size:11.5px;
+  margin:6px 0 0;
+}
+.h{
+  font-weight:800; font-size:14px; line-height:1.2;
+  margin:0 0 8px;
+
+}
+.chip{
+  display:inline-flex;
+  align-items:center; 
+  gap:8px;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+
+  background: var(--danger);   
+  color: var(--accent);      
+  border: none;
+}
+
+.chip b{
+  color: var(--accent);
+  font-weight:800;
+}
+/* Modal */
+.modal{
+  position:fixed; inset:0;
+  background:rgba(17,24,39,.65);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:14px;
+  z-index:10;
+}
+.modal.open{display:flex;}
+.modalBox{
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  display:flex;
+  flex-direction:column;
+}
+.modalTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 12px;
+  border-bottom:1px solid var(--line);
+  background: rgba(244,196,0,.10);
+}
+.modalTop .left{
+  min-width:0;
+}
+.modalTop .t{
+  font-weight:900; margin:0;
+  font-size:14px;
+}
+.modalTop .c{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+.modalTop .actions{display:flex; gap:10px; align-items:center;}
+.modalTop .x{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  width:40px;height:40px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.modalTop .x:hover{
+  border-color: rgba(217,31,38,.45);
+}
+.modalImg{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.85);
+}
+.modalImg img{
+  max-width: 100vw;
+  max-height: calc(100vh - 64px); /* deja espacio para la barra superior */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display:block;
+}
+.smallHelp{
+  color:var(--muted);
+  font-size:12px;
+  padding:10px 12px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.kbd{
+  border:none;
+  background:transparent;
+  padding:0;
+  border-radius:0;
+  font-family:inherit;
+  color:#9ca3af;   /* gris suave */
+  font-weight:500;
+}
+.card .body > div:last-child{
+  color:#c7ccd3;
+  font-size:11.5px;
+}
+/* ====== COVER ====== */
+.cover{
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display:flex;
+  flex-direction:column;
+}
+
+.cover__imgWrap{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 18px;
+}
+
+.cover__img{
+  width: min(1100px, 96vw);
+  height: min(78vh, 820px);
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(17,24,39,.10);
+  background: #fff;
+}
+
+.cover__bottom{
+  padding: 16px 16px 22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+}
+
+.enterBtn{
+  width: min(420px, 92vw);
+  border: 1px solid #e3b400;
+  background: var(--accent);
+  color: #111;
+  font-weight: 900;
+  letter-spacing: .8px;
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .10s ease, filter .12s ease, box-shadow .12s ease;
+}
+.enterBtn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+.enterBtn:active{ transform: translateY(1px) scale(.99); }
+
+.cover__hint{
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Animación de salida */
+.cover.closing{
+  animation: coverFade .45s ease forwards;
+}
+.cover.closing .cover__img{
+  animation: coverZoom .45s ease forwards;
+}
+@keyframes coverFade{
+  to{ opacity:0; }
+}
+@keyframes coverZoom{
+  to{ transform: scale(1.03); opacity:.92; }
+}
+
+#appRoot{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+#appRoot.ready{
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Thumbnail (ejemplo) */
+.thumb {
+  width: 100%;
+  height: 180px;           /* o el alto que uses */
+  object-fit: cover;       /* para que se vea “bonita” en grid */
+  border-radius: 12px;
+}
+
+/* Modal */
+#imgModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+#imgModal.open { display: flex; }
+
+#imgModal img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain !important;  /* CLAVE: mostrar completa */
+  border-radius: 12px;
+  background: #fff;
+}
+#imgModal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  z-index: 9999;
+
+  display: none;            /* ✅ cerrado */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  overflow: auto;
+}
+
+#imgModal.open{
+  display: flex;            /* ✅ se abre solo con clase */
+}
+
+#imgModalImg{
+  display: block;
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
   </style>
 </head>
 <body>
+<!-- PORTADA -->
+<div id="cover" class="cover">
+  <div class="cover__imgWrap">
+    <img class="cover__img" src="img/PORTADA.png" alt="Portada" />
+  </div>
+
+  <div class="cover__bottom">
+    <button id="enterBtn" class="enterBtn">ENTRAR</button>
+    <div class="cover__hint">Toque para abrir el catálogo</div>
+  </div>
+</div>
+
+<div id="appRoot">
+  
+</div>
   <header>
     <div class="wrap">
       <div class="top">
         <div class="brand">
           <div class="dot"></div>
           <div>
-            <div class="title">Catálogo Interno</div>
-            <div class="subtitle">Búsqueda por nombre / keywords — láminas (71)</div>
+            <div class="title">
+CATÁLOGO DE VENTAS 
+  <span class="version">v1.1.0</span>
+</div>
+            <div class="subtitle">Actualizado al 24 de feb., de 2026.</div>
           </div>
         </div>
 
         <div class="search">
-          <input id="q" type="search" placeholder="Buscar… (ej: atf, r-95, kerosene, thinner)" autocomplete="off" />
+          <input id="q" type="search" placeholder="Buscar… (ej: atf, r95, kerosene, thinner)" autocomplete="off" />
           <select id="cat">
             <option value="">Todas las categorías</option>
           </select>
@@ -449,5 +676,45 @@
       }
     })();
   </script>
+<script>
+  const cover = document.getElementById('cover');
+  const enterBtn = document.getElementById('enterBtn');
+  const appRoot = document.getElementById('appRoot');
+
+  // Mostrar catálogo cuando cargue
+  window.addEventListener('load', () => {
+    // Mantén el catálogo listo detrás
+    requestAnimationFrame(() => appRoot.classList.add('ready'));
+  });
+
+ 
+function enterCatalog(){
+  const cover = document.getElementById('cover');
+  cover.classList.add('closing');
+
+  setTimeout(()=>{
+    cover.style.display = "none";
+  }, 650);
+}
+
+
+  enterBtn.addEventListener('click', enterCatalog);
+
+  // (Opcional) Enter en teclado
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' && cover.style.display !== 'none'){
+      enterCatalog();
+    }
+  });
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("/sw.js");
+    } catch (e) {}
+  });
+}
+</script>
 </body>
 </html>

@@ -1,63 +1,63 @@
 [
   {
     "id": 1,
-    "titulo": "3en1 - 3 en 1",
-    "categoria": "lubricantes multiusos",
+    "titulo": "Lubricante 3 en 1",
+    "categoria": "Lubricantes Multiusos",
     "keywords": "3en1, 3 en 1, aceite 3 en 1, lubricante multiuso",
     "imagen": "3en1 - 3 en 1.png"
   },
   {
     "id": 2,
-    "titulo": "10w30 - 20w50 - 15w40 - krownx",
-    "categoria": "aceite de motor",
+    "titulo": "Aceites Multigrado - Krownx",
+    "categoria": "Aceite de Motor",
     "keywords": "10w30, 10w-30, 20w50, 20w-50, 15w40, 15w-40, krownx, aceite motor",
     "imagen": "10w30 - 20w50 - 15w40 - krownx.png"
   },
   {
     "id": 3,
-    "titulo": "10W30",
-    "categoria": "aceite de motor",
+    "titulo": "Aceite 10W30 - Gasolina",
+    "categoria": "Aceite de Motor",
     "keywords": "10w30, 10w-30, aceite 10w30",
     "imagen": "10W30.png"
   },
   {
     "id": 4,
-    "titulo": "15W40",
-    "categoria": "aceite de motor",
+    "titulo": "Aceite 15W40 - Diesel",
+    "categoria": "Aceite de Motor",
     "keywords": "15w40, 15w-40, aceite 15w40",
     "imagen": "15W40.png"
   },
   {
     "id": 5,
-    "titulo": "15w40t",
-    "categoria": "aceite de motor",
+    "titulo": "Aceite 15w40 Diesel (balde)",
+    "categoria": "Aceite de Motor",
     "keywords": "15w40t, 15w-40t, diesel 15w40",
     "imagen": "15w40t.png"
   },
   {
     "id": 6,
-    "titulo": "20w50",
+    "titulo": "Aceite 20w50 - Gasolina",
     "categoria": "aceite de motor",
     "keywords": "20w50, 20w-50, aceite 20w50",
     "imagen": "20w50.png"
   },
   {
     "id": 7,
-    "titulo": "68 - tractor - hidraulico",
-    "categoria": "hidráulicos",
+    "titulo": "Aceite Hidráulico",
+    "categoria": "Hidráulicos",
     "keywords": "68, hidraulico 68, tractor 68, aceite hidraulico",
     "imagen": "68 - tractor - hidraulico.png"
   },
   {
     "id": 8,
-    "titulo": "80w90 - 85w140",
+    "titulo": "Aceites GL Multi grado",
     "categoria": "transmisión",
     "keywords": "80w90, 80w-90, 85w140, 85w-140, diferencial",
     "imagen": "80w90 - 85w140.png"
   },
   {
     "id": 9,
-    "titulo": "90 - 140 - gl - krownx",
+    "titulo": "Aceites Gl Krownx",
     "categoria": "transmisión",
     "keywords": "90, 140, gl, gl4, gl5, krownx, aceite transmision",
     "imagen": "90 - 140 - gl - krownx.png"
