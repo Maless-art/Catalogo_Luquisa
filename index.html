@@ -415,7 +415,73 @@ main{padding:18px 0 50px}
   height: auto;
   object-fit: contain;
 }
-  </style>
+.present-bar{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+.present{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:10px 0 30px;
+}
+.present .sheet{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.present .sheet img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+}
+/* ===== Changelog: tamaño real según contenido ===== */
+#changelog.modal{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+#changelog.modal.open{ display:flex; }
+
+/* sobre-escribe el modal fullscreen */
+#changelog .modalBox{
+  width: min(520px, 92vw);
+  height: 40vh !important;
+  max-height: none !important;
+
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 18px 45px rgba(0,0,0,.18);
+
+  overflow: hidden;
+  display:block !important;      /* 🔥 clave: no flex aquí */
+}
+
+/* contenido interno con padding y nada que lo estire */
+#changelog .modalTop{
+  background:#f8f4df;
+  padding:14px 18px;
+  border-bottom:1px solid var(--line);
+}
+
+/* este wrapper es el que tiene el ul */
+#changelog .modalBox > div:last-child{
+  padding:14px 18px 16px;
+}
+
+#changelog ul{
+  margin:0;
+  padding-left:18px;
+  line-height:1.6;
+  font-size:14px;
+} </style>
 </head>
 <body>
 <!-- PORTADA -->
@@ -441,7 +507,7 @@ main{padding:18px 0 50px}
           <div>
             <div class="title">
 CATÁLOGO DE VENTAS 
-  <span class="version">v1.1.0</span>
+  <span class="version">v2.1.0</span>
 </div>
             <div class="subtitle">Actualizado al 24 de feb., de 2026.</div>
           </div>
@@ -452,8 +518,12 @@ CATÁLOGO DE VENTAS
           <select id="cat">
             <option value="">Todas las categorías</option>
           </select>
+<button class="btn" id="show">Presentación</button>
           <button class="btn" id="clear">Limpiar</button>
         </div>
+<div class="present-bar" id="presentBar" style="display:none;">
+  <button class="btn" id="back">Volver</button>
+</div>
       </div>
       <div class="meta">
         <div id="count">Cargando catálogo…</div>
@@ -465,6 +535,7 @@ CATÁLOGO DE VENTAS
   <main>
     <div class="wrap">
       <div class="grid" id="grid"></div>
+<div class="present" id="present" style="display:none;"></div>
     </div>
   </main>
 
@@ -492,7 +563,13 @@ CATÁLOGO DE VENTAS
   </div>
 
   <script>
-    // Ajusta esta ruta si tu carpeta de imágenes se llama distinto
+ const APP_VERSION = "v2.1.0";
+const CHANGELOG = [
+  "Nuevo modo Presentación (scroll tipo PDF).",
+  "Optimización de carga de imágenes",
+  "Corrección en filtro de categorías",
+  "Mejoras de búsqueda y categorías."
+];
     const IMG_BASE = "./img/";
 
     let data = [];
@@ -519,7 +596,51 @@ CATÁLOGO DE VENTAS
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "") // quita tildes en búsqueda
         .trim();
+const $show = document.getElementById("show");
+const $presentBar = document.getElementById("presentBar");
+const $back = document.getElementById("back");
+const $present = document.getElementById("present");
 
+function buildPresentView(items){
+  $present.innerHTML = items.map(it => {
+
+    const src = "img/" + it.imagen;
+
+    return `
+      <div class="sheet">
+        <img src="${src}" alt="${it.titulo}" loading="lazy">
+      </div>
+    `;
+  }).join("");
+}
+function enterPresent(){
+  // usa filtered si hay búsqueda activa, si no usa data
+  const items = (filtered && filtered.length) ? filtered : data;
+
+  $show.style.display = "none";
+  $clear.style.display = "none"; // opcional
+  $presentBar.style.display = "flex";
+
+  $grid.style.display = "none";
+  $present.style.display = "flex";
+
+  buildPresentView(items);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function exitPresent(){
+  $presentBar.style.display = "none";
+  $show.style.display = "";
+  $clear.style.display = ""; // opcional
+
+  $present.style.display = "none";
+  $grid.style.display = ""; // vuelve a tu CSS original
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+$show.addEventListener("click", enterPresent);
+$back.addEventListener("click", exitPresent);
     function setCategories(items){
       const cats = Array.from(new Set(items.map(x => (x.categoria || "").trim()).filter(Boolean)))
                         .sort((a,b)=>a.localeCompare(b, "es"));
@@ -716,6 +837,76 @@ if ("serviceWorker" in navigator) {
     } catch (e) {}
   });
 }
+const $ch = document.getElementById("changelog");
+const $chVer = document.getElementById("chVer");
+const $chList = document.getElementById("chList");
+const $chOk = document.getElementById("chOk");
+
+function openChangelog(){
+  $chVer.textContent = APP_VERSION;
+  $chList.innerHTML = CHANGELOG.map(x => `<li>${x}</li>`).join("");
+  $ch.setAttribute("aria-hidden","false");
+}
+
+function closeChangelog(){
+  $ch.setAttribute("aria-hidden","true");
+  localStorage.setItem("catalogo_last_seen_version", APP_VERSION);
+}
+
+
+
+window.addEventListener("load", () => {
+
+  const $ch = document.getElementById("changelog");
+  const $chVer = document.getElementById("chVer");
+  const $chList = document.getElementById("chList");
+  const $chOk = document.getElementById("chOk");
+
+  // 🔒 Protección: si no existe el modal, no ejecuta nada
+  if(!$ch || !$chVer || !$chList || !$chOk){
+    console.error("Changelog: elementos no encontrados en el DOM.");
+    return;
+  }
+
+  function openChangelog(){
+    $chVer.textContent = APP_VERSION;
+    $chList.innerHTML = CHANGELOG.map(x => `<li>${x}</li>`).join("");
+    $ch.classList.add("open");
+    $ch.setAttribute("aria-hidden","false");
+  }
+
+  function closeChangelog(){
+    $ch.classList.remove("open");
+    $ch.setAttribute("aria-hidden","true");
+    localStorage.setItem("catalogo_last_seen_version", APP_VERSION);
+  }
+
+  $chOk.addEventListener("click", closeChangelog);
+
+  const lastSeen = localStorage.getItem("catalogo_last_seen_version");
+  if(lastSeen !== APP_VERSION){
+    openChangelog();
+  }
+
+});
+
 </script>
+<div class="modal" id="changelog" aria-hidden="true">
+  <div class="modalBox" role="dialog" aria-modal="true" aria-label="Novedades">
+    <div class="modalTop">
+      <div class="left">
+        <p class="t">Novedades — <span id="chVer"></span></p>
+        <p class="c">Cambios de esta actualización</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="chOk">Entendido</button>
+      </div>
+    </div>
+    <div style="padding:14px 2px 2px;">
+      <ul id="chList" style="margin:0; padding-left:18px;"></ul>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
