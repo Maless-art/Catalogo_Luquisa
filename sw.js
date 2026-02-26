@@ -1,5 +1,4 @@
-// sw.js
-const CACHE_NAME = "catalogo-luquisa-v1.1.0";
+const CACHE_NAME = "catalogo-luquisa-v1.1.1";
 const ASSETS = [
   "/",
   "/index.html",
@@ -11,7 +10,7 @@ const ASSETS = [
   "/img/PORTADA.png"
 ];
 
-// Instala y cachea lo básico
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
@@ -19,7 +18,7 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// Activa y limpia caches viejos
+
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -29,9 +28,6 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Estrategia:
-// - JSON e imágenes: cache-first (rápido offline)
-// - HTML: network-first (para que actualice si hay internet)
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
@@ -41,16 +37,21 @@ self.addEventListener("fetch", (event) => {
   const isHTML = req.mode === "navigate" || req.destination === "document";
   const isData = url.pathname.endsWith(".json") || req.destination === "image";
 
-  if (isHTML) {
-    event.respondWith(
-      fetch(req).then((res) => {
+ if (isHTML) {
+  event.respondWith(
+    fetch(req)
+      .then((res) => {
         const copy = res.clone();
-        caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+        caches.open(CACHE_NAME).then((c) => c.put("/index.html", copy));
         return res;
-      }).catch(() => caches.match(req).then((r) => r || caches.match("./index.html")))
-    );
-    return;
-  }
+      })
+      .catch(async () => {
+       const cached = await caches.match("/index.html");
+        return cached || caches.match("/");
+      })
+  );
+  return;
+}
 
   if (isData) {
     event.respondWith(
