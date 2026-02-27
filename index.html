@@ -508,6 +508,7 @@ main{padding:18px 0 50px}
             <div class="title">
 CATÁLOGO DE VENTAS 
   <span class="version">v1.1.3</span>
+<span class="muted">Aperturas: <b id="openCount">—</b></span>
 </div>
             <div class="subtitle">Actualizado al 25 de feb., de 2026.</div>
           </div>
@@ -911,6 +912,41 @@ window.addEventListener("load", () => {
     </div>
   </div>
 </div>
+<script>
+(function () {
+  const NS = "catalogo-luquisa";
+  const KEY = "opens";
 
+  // evita sumar 20 veces si recargan rápido (1 conteo cada 10 min por dispositivo)
+  const cooldownMs = 10 * 60 * 1000;
+  const lastKey = "hit_last_" + NS + "_" + KEY;
+  const now = Date.now();
+  const last = Number(localStorage.getItem(lastKey) || 0);
+
+  const shouldHit = (now - last) > cooldownMs;
+
+  function safeFetch(url){
+    return fetch(url, { cache: "no-store", keepalive: true }).catch(()=>null);
+  }
+
+  // 1) sumar
+  if (shouldHit) {
+    localStorage.setItem(lastKey, String(now));
+    safeFetch(`https://api.countapi.xyz/hit/${encodeURIComponent(NS)}/${encodeURIComponent(KEY)}`);
+  }
+
+  // 2) leer (opcional: mostrarlo en consola)
+  safeFetch(`https://api.countapi.xyz/get/${encodeURIComponent(NS)}/${encodeURIComponent(KEY)}`)
+    .then(r => r ? r.json() : null)
+    .then(d => {
+      if (!d || typeof d.value !== "number") return;
+      console.log("📊 Total aperturas:", d.value);
+
+      // Si quieres mostrarlo en pantalla, crea un span con id="openCount"
+      const el = document.getElementById("openCount");
+      if (el) el.textContent = d.value.toLocaleString("es-PA");
+    });
+})();
+</script>
 </body>
 </html>
