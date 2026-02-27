@@ -1,7 +1,7 @@
 {
   "name": "Catálogo Luquisa",
   "short_name": "Catálogo",
-  "id": "LQCatalogo",
+
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
