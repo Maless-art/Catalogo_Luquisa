@@ -507,7 +507,7 @@ main{padding:18px 0 50px}
           <div>
             <div class="title">
 CATÁLOGO DE VENTAS 
-  <span class="version">v1.1.2</span>
+  <span class="version">v1.1.3</span>
 </div>
             <div class="subtitle">Actualizado al 25 de feb., de 2026.</div>
           </div>
@@ -563,14 +563,15 @@ CATÁLOGO DE VENTAS
   </div>
 
   <script>
- const APP_VERSION = "v1.1.2";
+ const APP_VERSION = "v1.1.3";
 const CHANGELOG = [
   "Nuevo modo Presentación (scroll tipo PDF).",
   "Optimización de carga de imágenes",
    "Mejoras de búsqueda y categorías",
   "Ajustes en el sevice worker",
   "Ajustes en el manifest",
-  "Resuelto el problema de instalación en tablets genéricas"
+  "Resuelto el problema de instalación en tablets genéricas",
+  "Reordenamiento de hojas (adaptado a catálogo actual)"
 ];
     const IMG_BASE = "./img/";
 
@@ -784,8 +785,9 @@ $back.addEventListener("click", exitPresent);
         if(!res.ok) throw new Error("No se pudo cargar catalogo.json");
         data = await res.json();
 
-        // orden por título
-        data.sort((a,b) => (a.titulo||"").localeCompare((b.titulo||""), "es"));
+        // orden por referencia de catálogo físico
+        
+        data.sort((a,b) => (a.orden ?? 9999) - (b.orden ?? 9999));
 
         setCategories(data);
         filtered = data;
