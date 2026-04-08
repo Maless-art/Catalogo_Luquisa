@@ -1,4 +1,4 @@
-const CACHE_NAME = "catalogo-luquisa-v1.1.4";
+const CACHE_NAME = "catalogo-luquisa-v1.1.5.1";
 const ASSETS = [
   "/",
   "/index.html",
