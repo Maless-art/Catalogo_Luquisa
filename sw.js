@@ -1,4 +1,6 @@
-const CACHE_NAME = "catalogo-luquisa-v1.1.5.1";
+const CACHE_NAME = "catalogo-luquisa-v1.2"; 
+// 1 = cambios importantes en la aplicación
+// 2 = actualización del catálogo (nuevas hojas, correcciones)
 const ASSETS = [
   "/",
   "/index.html",
